@@ -3,8 +3,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-def mysum(request,x,y=0,z=0):
+def mysum(request,numbers):   
+    #numbers=1/2/3/4/324//234//23/4/234/
+    #result = sum(map(int, numbers.split("/")))
+    result = sum(map(lambda s:int(s or 0), numbers.split("/"))) # url에 // 들어갔을 때, 대비
 
-    return HttpResponse(int(x) +int(y)+ int(z))
+    return HttpResponse(result)
 
 
