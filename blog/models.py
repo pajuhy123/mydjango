@@ -24,6 +24,9 @@ class Post(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     created_at = models.DateTimeField(auto_now_add = True) # 생성 될 떄, 자동 저장
     updated_at = models.DateTimeField(auto_now=True)       # 갱신 될 때, 자동 갱신
+    # 기본 정렬 설정
+    class Meta:
+        ordering = ['-id']
 
     # 글 title 보이기
     def __str__(self):
