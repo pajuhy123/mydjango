@@ -23,4 +23,6 @@ class PostAdmin(admin.ModelAdmin):
         updated_count =  queryset.update(status='p')
         self.message_user(request, '{} 건의 포스팅을 Published 상태로 변경'.format(updated_count))
     make_published.short_description = '지정 포스팅을 Published 상태로 변경'
+
+    
 #admin.site.register(Post, PostAdmin)

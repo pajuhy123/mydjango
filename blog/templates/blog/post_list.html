@@ -5,6 +5,20 @@
 </head>
 
 <body>
- 안녕하세요 시험 페이지 입니다.
+      <p> 안녕하세요 시험페이지 입니다 </p>
+<hr/>
+<ul>
+{% for post in post_list%}
+    <li>
+        {{post.id}}
+        {{post.title}}
+        <small> by{{post.author}}</small>
+        <small> at{{post.updated_at}}</small>
+    </li>
+{%endfor%}
+</ul>
+
+
+
 </body>
 </html>
