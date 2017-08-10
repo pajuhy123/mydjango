@@ -7,6 +7,10 @@
 <body>
       <p> 안녕하세요 시험페이지 입니다 </p>
 <hr/>
+<form action="" method="get"> 
+    <input type="text" name='q' value="{{q}}"/>
+    <input type='submit' value="검색">
+</form>
 <ul>
 {% for post in post_list%}
     <li>
