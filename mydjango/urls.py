@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^blog/', include('blog.urls')),  #url에서 공백 주의!
     url(r'^dojo/', include('dojo.urls')),
+    url(r'^shop/', include('shop.urls')),
 ]
 
 if settings.DEBUG:
