@@ -12,6 +12,21 @@
 
      {{post.content|linebreaks}}   
 
+     <hr />
+
+     <h3> Comment </h3>
+     <ul>
+     {%for comment in post.comment_set.all %}
+        <li>
+
+          {{comment.message}}
+          <small> by {{comment.author}}</small>
+          <small> at {{comment.created_at}}</small>
+        </li>
+    {%endfor%}
+     </ul>
+
+
 
 
 </body>
