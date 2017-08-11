@@ -22,7 +22,7 @@ class Post(models.Model):
             validators=[lnglat_validator],
             help_text='경도/위도 포맷으로 입력해 주세여')
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-    tag_set =  models.ManyToManyField('Tag') # 다른 앱에 있는 모델 연결시 'dojo.Tag'
+    tag_set =  models.ManyToManyField('Tag', blank= True) # 다른 앱에 있는 모델 연결시 'dojo.Tag'
     created_at = models.DateTimeField(auto_now_add = True) # 생성 될 떄, 자동 저장
     updated_at = models.DateTimeField(auto_now=True)       # 갱신 될 때, 자동 갱신
     # 기본 정렬 설정
