@@ -1,5 +1,6 @@
 #blog/model.py
 import re
+from django.conf import settings
 from django.forms import ValidationError
 
 from django.db import models
@@ -14,7 +15,8 @@ class Post(models.Model):
         ('p', 'Published'),
         ('w', 'Withdrawn')
     )
-    author = models.CharField(max_length=20) #blank 옵션을 주지 않았으므로 필수 필드
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    #author = models.CharField(max_length=20) #blank 옵션을 주지 않았으므로 필수 필드
     title = models.CharField(max_length=100, verbose_name ='제목', help_text='포스팅 제목을 설정해 주세요, 최대 100자 내로 써주세요') #길이 제한이 있는 문자열
     content = models.TextField(verbose_name='내용')             #길이 제한이 없는 문자열
     tags = models.CharField(max_length=100, blank= True)
