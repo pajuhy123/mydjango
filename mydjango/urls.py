@@ -20,6 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^blog/', include('blog.urls')),  #url에서 공백 주의!
     url(r'^dojo/', include('dojo.urls')),
 ]
