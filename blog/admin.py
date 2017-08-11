@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Post
 from .models import Comment
+from .models import Tag
 
 
 
@@ -31,3 +32,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class Commentdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Tag)
+class Tagdmin(admin.ModelAdmin):
+    list_play=['name']
