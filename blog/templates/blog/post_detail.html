@@ -1,13 +1,12 @@
-<!doctype>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no" />
-<title> {{post.title}}</title>
-</head>
+{%extends "blog/layout.html"%}
 
-<body>
+{% block title%}
+  {{post.title}}
+{%endblock%}
 
-     <h1> {{post.title}}</h1>
+{%block content %}
+
+<h1> {{post.title}}</h1>
 
 
      {{post.content|linebreaks}}   
@@ -25,9 +24,6 @@
         </li>
     {%endfor%}
      </ul>
+{%endblock%}
 
 
-
-
-</body>
-</html>
