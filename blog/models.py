@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 def lnglat_validator(value):
-    if not re.match(r'^([+-]?\d+\.?\d*), ([+-]?\d+\.?\d*)$', value):  #위도 경도 타입을 검사하는 
+    if not re.match(r'^([+-]?\d+\.?\d*),([+-]?\d+\.?\d*)$', value):  #위도 경도 타입을 검사하는 
         raise ValidationError('invalid lnglat_type')                  #Validator
 
 class Post(models.Model):
