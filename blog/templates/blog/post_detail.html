@@ -3,31 +3,29 @@
 {% block title%}
   {{post.title}}
 {%endblock%}
-
 {%block content %}
-
-<h1> {{post.title}}</h1>
-
-
-     {{post.content|linebreaks}}   
-
-     <hr />
-
-     <h3> Comment </h3>
-     <ul>
-     {%for comment in post.comment_set.all %}
-        <li>
-
-          {{comment.message}}
-          <small> by {{comment.author}}</small>
-          <small> at {{comment.created_at}}</small>
-        </li>
-    {%endfor%}
-     </ul>
-    
-    <hr />
-    
-    <a href="{% url 'blog:post_list'%}"> 글 목록으로 돌아가기 </a>
+   <div class="container">
+     <div class="row">
+        <div class='col-sm-12'>
+            <h1> {{post.title}}</h1>
+              {{post.content|linebreaks}}   
+               <hr />
+            <h3> Comment </h3>
+                <ul>
+                   {%for comment in post.comment_set.all %}
+                     <li>
+                        {{comment.message}}
+                        <small> by {{comment.author}}</small>
+                        <small> at {{comment.created_at}}</small>
+                      </li>
+                    {%endfor%}
+                </ul>
+               <hr />
+            <a href="{% url 'blog:post_list'%}" class="btn btn-primary"> 글 목록 </a>
+        
+        </div>
+     </div>
+   </div>
 {%endblock%}
 
 
