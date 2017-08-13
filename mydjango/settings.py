@@ -132,5 +132,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'mydjango', 'static'),
 ]
+#배포를 위한 설정
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 
 INTERNAL_IPS =['127.0.0.1']
