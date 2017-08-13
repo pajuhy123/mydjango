@@ -34,7 +34,10 @@ def post_new(request):
             post = Post.objects.create(**form.cleaned_data)
             '''
             #방법 5 --> forms.py에 save 함수 구현
-            post = form.save()
+            post = form.save(commit =False) #save 함수 호출을 지연시킨다. 
+            post.ip = request.META['REMOTE_ADDR']  #ip 얻어오기
+            post.save()
+
             return redirect('/dojo/')
     else:
         form = PostForm
