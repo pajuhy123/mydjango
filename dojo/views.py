@@ -30,7 +30,11 @@ def post_new(request):
                                       content=form.cleaned_data['content'])
             '''
             #방법 4
+            '''
             post = Post.objects.create(**form.cleaned_data)
+            '''
+            #방법 5 --> forms.py에 save 함수 구현
+            post = form.save()
             return redirect('/dojo/')
     else:
         form = PostForm
