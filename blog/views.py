@@ -3,10 +3,11 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post
 from .forms import PostForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
     qs =  Post.objects.all()
-
+    
     q = request.GET.get('q','')
     if q:
         qs = qs.filter(title__icontains = q)
