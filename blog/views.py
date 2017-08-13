@@ -1,7 +1,8 @@
 # dojo/view.py
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post
+from .forms import PostForm
 
 def post_list(request):
     qs =  Post.objects.all()
@@ -19,3 +20,26 @@ def post_detail(request, id):
     #   raise Http404
     post = get_object_or_404(Post,id=id)  #위에 4가지 코드를 1줄로!
     return render(request, 'blog/post_detail.html', {'post': post})
+
+def post_new(request):
+    if request.method =='POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save()  
+            return redirect(post)  # 이미 model 에 post.get_absolute_url 함수를 구현 -->post_detail 로 이동
+    
+    else:
+        form = PostForm
+    return render(request, 'blog/post_form.html', {'form': form})
+
+def post_edit(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method =='POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()  
+            return redirect(post)  # 이미 model 에 post.get_absolute_url 함수를 구현 -->post_detail 로 이동
+    
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_form.html', {'form': form})
