@@ -64,7 +64,7 @@ ROOT_URLCONF = 'mydjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [  os.path.join(BASE_DIR, 'mydjango', 'templates'),   ],
+        'DIRS': [  os.path.join(BASE_DIR, 'mydjango', 'templates'),   ], #프로젝트 template 경로 설정
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,5 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+#프로젝트(제일 상위)에서 css 파일 경로 설정
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'mydjango', 'static'),
+]
 
 INTERNAL_IPS =['127.0.0.1']

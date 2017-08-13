@@ -41,7 +41,7 @@ def post_edit(request, id):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save()
-            messages.success(request, '포스팅을 수정했습니다.')  
+            messages.success(request, '포스팅을 수했습니다.')  
             return redirect(post)  # 이미 model 에 post.get_absolute_url 함수를 구현 -->post_detail 로 이동
     
     else:
