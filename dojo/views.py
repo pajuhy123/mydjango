@@ -2,9 +2,24 @@
 import os
 from django.conf import settings
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
 from .models import Post
+
+def post_edit(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit =False) #save 함수 호출을 지연시킨다. 
+            post.ip = request.META['REMOTE_ADDR']  #ip 얻어오기
+            post.save()
+            return redirect('/dojo/')
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'dojo/post_form.html', {
+        'form': form,
+})
 
 
 def post_new(request):
