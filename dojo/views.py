@@ -6,6 +6,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
 from .models import Post
 
+def post_detail(request, id):
+    post = get_object_or_404(Post,id=id)
+    return render(request, 'dojo/post_detail.html',{
+      'post':post,
+})
+
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
     if request.method == 'POST':
