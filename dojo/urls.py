@@ -5,7 +5,8 @@ from . import views_cbv
 
 urlpatterns=[
     url(r'^new/$', views.post_new),
-    url(r'^(?P<pk>\d+)/$', views.post_detail),
+    url(r'^(?P<pk>\d+)/$', views.post_detail), #url(r'^(?P<pk>\d+)/$', DetailView.as_view(model=Post)), 
+                                               # 위와 같이도 사용 가능함, 더 간단!
     url(r'^(?P<id>\d+)/edit/$', views.post_edit),
 
 
