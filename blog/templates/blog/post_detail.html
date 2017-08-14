@@ -1,4 +1,5 @@
 {%extends "blog/layout.html"%}
+{%load imagekit%}
 
 {% block title%}
   {{post.title}}
@@ -9,7 +10,11 @@
         <div class='col-sm-12'>
             <h1> {{post.title}}</h1>
             {% if post.photo%}
-             <img src='{{post.photo.url}}' style="max_width:100%;"/>
+             {#1#} <img src='{{post.photo.url}}' style="max_width:100%;"/>
+             {#2#} {% thumbnail '100x100' post.photo%}
+             {#3#} {% thumbnail '100x100' post.photo as thumb%}  {# 커스텀 하면 이것은 출력하지 않고 instance 만 보내줌#}
+                   <img src="{{thumb.url}}" , width="{{thumb.width}}", height="{{tyumb.height}}" />
+             {#4#} {% thumbnail '100x100' post.photo -- style='' onclick='' class=''%}
             {%endif%}
               {{post.content|linebreaks}}   
                <hr />
