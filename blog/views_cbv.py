@@ -1,9 +1,11 @@
 from django import forms
-from django.views.generic import CreateView,ListView
+from django.views.generic import CreateView,ListView,DetailView
 from .models import Post 
 
 
 post_list =  ListView.as_view(model=Post, paginate_by =10)
+
+post_detail = DetailView.as_view(model = Post)
 
 
 #blog/form.py  원래는 여기에다가 form 을 구현
