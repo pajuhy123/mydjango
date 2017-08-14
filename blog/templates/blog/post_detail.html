@@ -8,8 +8,8 @@
      <div class="row">
         <div class='col-sm-12'>
             <h1> {{post.title}}</h1>
-            {% if post.photh%}
-             <img src='{{post.photo.url}}' style='max_width: 100%;'/>
+            {% if post.photo%}
+             <img src='{{post.photo_thumbnail.url}}' style="max_width:100%;"/>
             {%endif%}
               {{post.content|linebreaks}}   
                <hr />

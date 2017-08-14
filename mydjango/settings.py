@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'el_pagination',
-    'imagekit'
+    'imagekit',
     'bootstrap3',
     'debug_toolbar',
     'django_extensions',

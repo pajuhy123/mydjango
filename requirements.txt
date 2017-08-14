@@ -1,10 +1,10 @@
-ango==1.11.4
+django==1.11.4
 django-debug-toolbar
 django-extensions
 django-bootstrap3==9.0.0
 django-el-pagination==3.1.0
 pilkit==2.0
-ipython[notebok]
+ipython[notebook]
 request
 django-imagekit
 
