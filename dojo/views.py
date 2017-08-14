@@ -8,7 +8,7 @@ from .forms import PostForm
 from .models import Post
 
 
-post_detail = DetailView.as_view(model=Post, pk_url_kwarg='id')
+post_detail = DetailView.as_view(model=Post)
 
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
