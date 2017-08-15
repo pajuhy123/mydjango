@@ -12,7 +12,7 @@ def signup(request):
              user = form.save()
              return redirect(settings.LOGIN_URL)  #default : "/account/login"
     else:
-            form = SignupForm#()
+            form = SignupForm()
     return render(request, "accounts/signup_form.html", {
           'form' : form,
       })
