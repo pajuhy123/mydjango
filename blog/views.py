@@ -8,7 +8,7 @@ from .models import Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
-    qs =  Post.objects.all()
+    qs =  Post.objects.all().prefetch_related('tag_set','comment_set') 
     
     q = request.GET.get('q','')
     if q:
