@@ -4,6 +4,7 @@ from .models import Post
 from django.core.urlresolvers import reverse_lazy
 
 #prefetch방법 2
+#클래스 기반 뷰 재정의
 class PostListView(ListView):
     model = Post
     queryset = Post.objects.all().prefetch_related('tag_set','comment_set')

@@ -31,7 +31,17 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class Commentdmin(admin.ModelAdmin):
-    pass
+    list_display= ['id','author', 'post_content_len']
+    #방법 1 list_select_related = ['post']  
+
+    def post_content_len(self, comment):
+        return '{}글자'.format(comment.post.content)
+    #방법 2
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.select_related('post')
+
+
 
 @admin.register(Tag)
 class Tagdmin(admin.ModelAdmin):
