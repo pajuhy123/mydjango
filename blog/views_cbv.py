@@ -3,8 +3,8 @@ from django.views.generic import CreateView,ListView,DetailView, UpdateView,Dele
 from .models import Post 
 from django.core.urlresolvers import reverse_lazy
 
-
-post_list =  ListView.as_view(model=Post, paginate_by =10)
+post_list =  ListView.as_view(model=Post)
+#post_list =  ListView.as_view(model=Post, paginate_by =10)
 
 post_detail = DetailView.as_view(model = Post)
 

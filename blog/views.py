@@ -4,6 +4,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post
 from .forms import PostForm
+from .models import Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
@@ -47,3 +48,10 @@ def post_edit(request, id):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_form.html', {'form': form})
+
+def comment_list(request):
+    comment_list = Comment.objects.all()
+    
+    return render(request, 'blog/comment_list.html', {
+              'comment_list' : comment_list,
+})
