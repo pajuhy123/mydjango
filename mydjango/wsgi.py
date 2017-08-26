@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mydjango.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mydjango.settings.prod") #실 서비스 사용의 진입점이기에
 
 application = get_wsgi_application()

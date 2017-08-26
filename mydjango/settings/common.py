@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os.path import abspath, dirname, join
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#"/Users/joon/mydjango/manage.py"
+#"/Users/joon/mydjango/mydjango/settings.py  기존 경로
+#BASE_DIR = dirname(dirname(abspath(__file__))) 기존경로에 따른 설정
+#"/Users/joon/mydjango/mydjango/settings/common.py  바뀐 경로
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))  #바뀐 경로에 따른 설정, 1파일의 깊이 만큼
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +30,7 @@ SECRET_KEY = '@jb8wzd_lp@wjwn0@vw5!*vay*op+eoq7qni(2p)1s6xi)65vt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] #서비스할 도메인만 입력하는 것이 좋다.
 
 
 # Application definition
@@ -41,7 +46,7 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
     'imagekit',
     'bootstrap3',
-    'debug_toolbar',
+    
     'django_extensions',
     'accounts', 
     'blog',
@@ -51,7 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -139,9 +144,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #실서비스시 추천 os.path.join(BASE_DIR,'..', 'media') 
 
-INTERNAL_IPS =['127.0.0.1']
+
 
 NAVER_CLIENT_ID = 'zlf18uHwXtdpWfKfZwAP'  # 이 값은 개별 ID
 
