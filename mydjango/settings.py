@@ -135,7 +135,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'mydjango', 'static'),
 ]
-#배포를 위한 설정
+#배포를 위한 설정 ,, 배포시 이곳에 1개의 파일이라도 들어있어야 한다. 빈 디렉토리면, git은 관리 하지 않는다.
 STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
