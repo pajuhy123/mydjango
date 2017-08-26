@@ -3,7 +3,18 @@ from django.views.generic import CreateView,ListView,DetailView, UpdateView,Dele
 from .models import Post 
 from django.core.urlresolvers import reverse_lazy
 
-post_list =  ListView.as_view(model=Post)
+#prefetch방법 2
+class PostListView(ListView):
+    model = Post
+    queryset = Post.objects.all().prefetch_related('tag_set','comment_set')
+
+post_list =  PostListView.as_view()
+'''
+#prefetch 방법 1
+post_list =  ListView.as_view(model=Post,
+                              queryset=Post.objects.all().prefetch_related('tag_set','comment_set')
+                              )
+'''
 #post_list =  ListView.as_view(model=Post, paginate_by =10)
 
 post_detail = DetailView.as_view(model = Post)
