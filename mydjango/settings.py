@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'el_pagination',
+    'raven.contrib.django.raven_compat',
     'imagekit',
     'bootstrap3',
     'debug_toolbar',
@@ -143,3 +144,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 INTERNAL_IPS =['127.0.0.1']
 
 NAVER_CLIENT_ID = 'zlf18uHwXtdpWfKfZwAP'  # 이 값은 개별 ID
+
+import raven
+#ref #SentryDashboard
+# FIXME: 현 프로젝트 ROOT 지정 
+GIT_ROOT = BASE_DIR
+if os.path.exists(os.path.join(GIT_ROOT, '.git')):
+    release = raven.fetch_git_sha(GIT_ROOT) # 현재 최근 커밋해시 획득
+else:
+    release = 'dev'
+
+RAVEN_CONFIG = {
+'release': release,
+# FIXME: 각자 설정에 맞춰 수정 - https://docs.sentry.io/clients/python/integrations/django/
+ 'dsn': 'https://ccf7f9b746e942f5a2a5646c57c349ef:f4fb8e5cb2014ba089d9c31a55b64610@sentry.io/208691',
+}

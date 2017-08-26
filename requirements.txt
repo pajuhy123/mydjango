@@ -8,4 +8,5 @@ ipython[notebook]
 request
 django-imagekit
 beautifulsoup4
+raven
 
